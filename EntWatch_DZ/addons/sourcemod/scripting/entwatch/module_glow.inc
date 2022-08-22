@@ -21,10 +21,10 @@ bool g_bMapRunning = false;
 
 stock void EWM_Glow_OnPluginStart()
 {
-	g_hCvar_Glow              = CreateConVar("entwatch_glow", "1", "Enable/Disable the glow Global.", _, true, 0.0, true, 1.0);
-	g_hCvar_Glow_Spawn        = CreateConVar("entwatch_glow_spawn", "1", "Enable/Disable the glow after Spawn Items.", _, true, 0.0, true, 1.0);
-	g_hCvar_Glow_Spawn_Type   = CreateConVar("entwatch_glow_spawn_type", "0", "Glow Type after Spawn Items.", _, true, -1.0, true, 3.0);
-	g_hCvar_Glow_Drop_Type    = CreateConVar("entwatch_glow_drop_type", "0", "Glow Type after Drop Items.", _, true, -1.0, true, 3.0);
+	g_hCvar_Glow              = AutoExecConfig_CreateConVar("entwatch_glow", "1", "Enable/Disable the glow Global.", _, true, 0.0, true, 1.0);
+	g_hCvar_Glow_Spawn        = AutoExecConfig_CreateConVar("entwatch_glow_spawn", "1", "Enable/Disable the glow after Spawn Items.", _, true, 0.0, true, 1.0);
+	g_hCvar_Glow_Spawn_Type   = AutoExecConfig_CreateConVar("entwatch_glow_spawn_type", "0", "Glow Type after Spawn Items.", _, true, -1.0, true, 3.0);
+	g_hCvar_Glow_Drop_Type    = AutoExecConfig_CreateConVar("entwatch_glow_drop_type", "0", "Glow Type after Drop Items.", _, true, -1.0, true, 3.0);
 
 	HookConVarChange(g_hCvar_Glow, Cvar_GLOW_Changed);
 	HookConVarChange(g_hCvar_Glow_Spawn, Cvar_GLOW_Changed);

@@ -14,7 +14,7 @@ stock void EWM_OfflineEban_OnPluginStart()
 {
 	g_OfflineArray = new ArrayList(512);
 	
-	g_hCvar_OfflineClearRecords		= CreateConVar("entwatch_offline_clear_time", "30", "Time during which data is stored (1-240)", _, true, 1.0, true, 240.0);
+	g_hCvar_OfflineClearRecords		= AutoExecConfig_CreateConVar("entwatch_offline_clear_time", "30", "Time during which data is stored (1-240)", _, true, 1.0, true, 240.0);
 	
 	HookConVarChange(g_hCvar_OfflineClearRecords, Cvar_OfflineEBAN_Changed);
 	

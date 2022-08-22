@@ -42,11 +42,11 @@ stock void EWM_Hud_OnPluginStart()
 {
 	g_iHItemsArray = new ArrayList(32);
 	g_iZMItemsArray = new ArrayList(32);
-	g_hCvar_DisplayEnabled		= CreateConVar("entwatch_display_enable", "1", "Enable/Disable the display.", _, true, 0.0, true, 1.0);
-	g_hCvar_DisplayCooldowns	= CreateConVar("entwatch_display_cooldowns", "1", "Show/Hide the cooldowns on the display.", _, true, 0.0, true, 1.0);
-	g_hCvar_Admins_See			= CreateConVar("entwatch_admins_see", "1", "Enable/Disable admins see everything Items", _, true, 0.0, true, 1.0);
-	g_hCvar_HUD_Channel			= CreateConVar("entwatch_hud_channel", "5", "Change HUD Channel/Group Dynamic channel.", _, true, 0.0, true, 5.0);
-	g_hCvar_ZM_pry				= CreateConVar("entwatch_zm_noitem_pry", "0", "Enable/Disable zm pry human Items if zms without items", _, true, 0.0, true, 1.0);
+	g_hCvar_DisplayEnabled		= AutoExecConfig_CreateConVar("entwatch_display_enable", "1", "Enable/Disable the display.", _, true, 0.0, true, 1.0);
+	g_hCvar_DisplayCooldowns	= AutoExecConfig_CreateConVar("entwatch_display_cooldowns", "1", "Show/Hide the cooldowns on the display.", _, true, 0.0, true, 1.0);
+	g_hCvar_Admins_See			= AutoExecConfig_CreateConVar("entwatch_admins_see", "1", "Enable/Disable admins see everything Items", _, true, 0.0, true, 1.0);
+	g_hCvar_HUD_Channel			= AutoExecConfig_CreateConVar("entwatch_hud_channel", "5", "Change HUD Channel/Group Dynamic channel.", _, true, 0.0, true, 5.0);
+	g_hCvar_ZM_pry				= AutoExecConfig_CreateConVar("entwatch_zm_noitem_pry", "0", "Enable/Disable zm pry human Items if zms without items", _, true, 0.0, true, 1.0);
 	
 	g_bDispEnabled = GetConVarBool(g_hCvar_DisplayEnabled);
 	g_bDispCooldowns = GetConVarBool(g_hCvar_DisplayCooldowns);

@@ -10,7 +10,7 @@ Handle	g_hCookie_UP = null;
 
 stock void EWM_Use_Priority_OnPluginStart()
 {
-	g_hCvar_UsePriority		= CreateConVar("entwatch_use_priority", "1", "Enable/Disable forced pressing of the button.", _, true, 0.0, true, 1.0);
+	g_hCvar_UsePriority		= AutoExecConfig_CreateConVar("entwatch_use_priority", "1", "Enable/Disable forced pressing of the button.", _, true, 0.0, true, 1.0);
 	g_bUsePriority 			= GetConVarBool(g_hCvar_UsePriority);
 	HookConVarChange(g_hCvar_UsePriority, Cvar_UsePriority_Changed);
 	RegConsoleCmd("sm_usepr", EWM_Use_Priority_Command);

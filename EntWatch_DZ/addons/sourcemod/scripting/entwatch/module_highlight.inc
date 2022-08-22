@@ -25,10 +25,10 @@ bool	g_bHL_Privilege_Player[MAXPLAYERS+1] = {false,...};
 
 stock void EWM_HLight_OnPluginStart()
 {
-	g_hCvar_HighLight_Weapon_Type   = CreateConVar("entwatch_hl_wtype", "1", "Type of HighLighting of items.", _, true, 0.0, true, 6.0);
-	g_hCvar_HighLight_Weapon_Color   = CreateConVar("entwatch_hl_wcolor", "0", "Color of HighLighting of items.", _, true, 0.0, true, 1.0);
-	g_hCvar_HighLight_Player_Type   = CreateConVar("entwatch_hl_ptype", "0", "Type of HighLighting of players that own the item.", _, true, 0.0, true, 6.0);
-	g_hCvar_HighLight_Player_Color   = CreateConVar("entwatch_hl_pcolor", "0", "Color of HighLighting of players that own the item.", _, true, 0.0, true, 1.0);
+	g_hCvar_HighLight_Weapon_Type   = AutoExecConfig_CreateConVar("entwatch_hl_wtype", "1", "Type of HighLighting of items.", _, true, 0.0, true, 6.0);
+	g_hCvar_HighLight_Weapon_Color   = AutoExecConfig_CreateConVar("entwatch_hl_wcolor", "0", "Color of HighLighting of items.", _, true, 0.0, true, 1.0);
+	g_hCvar_HighLight_Player_Type   = AutoExecConfig_CreateConVar("entwatch_hl_ptype", "0", "Type of HighLighting of players that own the item.", _, true, 0.0, true, 6.0);
+	g_hCvar_HighLight_Player_Color   = AutoExecConfig_CreateConVar("entwatch_hl_pcolor", "0", "Color of HighLighting of players that own the item.", _, true, 0.0, true, 1.0);
 
 	g_iHL_wtype = GetConVarInt(g_hCvar_HighLight_Weapon_Type);
 	g_iHL_wcolor = GetConVarBool(g_hCvar_HighLight_Weapon_Color);

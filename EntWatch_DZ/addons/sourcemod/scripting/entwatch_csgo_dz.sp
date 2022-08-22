@@ -2,6 +2,7 @@
 #pragma newdecls required
 #pragma dynamic 131072
 #include <sourcemod>
+#include <autoexecconfig>
 #include <sdktools>
 #include <sdkhooks>
 #include <cstrike>
@@ -55,10 +56,10 @@ bool g_bIsAdmin[MAXPLAYERS+1] = {false,...};
 #include "entwatch/module_transfer.inc"
 #include "entwatch/module_spawn_item.inc"
 #include "entwatch/module_menu.inc"
-//#include "entwatch/module_glow.inc" //change to HighLight
+#include "entwatch/module_glow.inc" //change to HighLight
 #include "entwatch/module_use_priority.inc"
 #include "entwatch/module_extended_logs.inc"
-//#include "entwatch/module_clantag.inc"
+#include "entwatch/module_clantag.inc"
 
 //#include "entwatch/module_physbox.inc" //Heavy module for the server. Not recommended. Need Collision Hook Ext https://forums.alliedmods.net/showthread.php?t=197815
 //#include "entwatch/module_debug.inc"
@@ -82,16 +83,19 @@ public void OnPluginStart()
 	
 	if(g_TriggerArray == INVALID_HANDLE) g_TriggerArray = new ArrayList(512);
 	
+	AutoExecConfig_SetFile("EntWatch_DZ", "sourcemod");
+	AutoExecConfig_SetCreateFile(true);
+	
 	#if defined EW_MODULE_PHYSBOX
 	EWM_Physbox_OnPluginStart();
 	#endif
 	
 	//CVARs
-	g_hCvar_TeamOnly		= CreateConVar("entwatch_mode_teamonly", "1", "Enable/Disable team only mode.", _, true, 0.0, true, 1.0);
-	g_hCvar_Delay_Use		= CreateConVar("entwatch_delay_use", "3.0", "Change delay before use", _, true, 0.0, true, 60.0);
-	g_hCvar_Scheme			= CreateConVar("entwatch_scheme", "classic", "The name of the scheme config.", _);
-	g_hCvar_BlockEPick		= CreateConVar("entwatch_blockepick", "1", "Block players from using E key to grab items.", _, true, 0.0, true, 1.0);
-	g_hCvar_GlobalBlock		= CreateConVar("entwatch_globalblock", "0", "Blocks the pickup of any items by players.", _, true, 0.0, true, 1.0);
+	g_hCvar_TeamOnly		= AutoExecConfig_CreateConVar("entwatch_mode_teamonly", "1", "Enable/Disable team only mode.", _, true, 0.0, true, 1.0);
+	g_hCvar_Delay_Use		= AutoExecConfig_CreateConVar("entwatch_delay_use", "3.0", "Change delay before use", _, true, 0.0, true, 60.0);
+	g_hCvar_Scheme			= AutoExecConfig_CreateConVar("entwatch_scheme", "classic", "The name of the scheme config.", _);
+	g_hCvar_BlockEPick		= AutoExecConfig_CreateConVar("entwatch_blockepick", "1", "Block players from using E key to grab items.", _, true, 0.0, true, 1.0);
+	g_hCvar_GlobalBlock		= AutoExecConfig_CreateConVar("entwatch_globalblock", "0", "Blocks the pickup of any items by players.", _, true, 0.0, true, 1.0);
 	
 	//Commands
 	RegAdminCmd("sm_ew_reloadconfig", EW_Command_ReloadConfig, ADMFLAG_CONFIG);
@@ -180,7 +184,9 @@ public void OnPluginStart()
 	LoadTranslations("EntWatch_DZ.phrases");
 	LoadTranslations("common.phrases");
 	
-	AutoExecConfig(true, "EntWatch_DZ");
+	//AutoExecConfig(true, "EntWatch_DZ");
+	AutoExecConfig_ExecuteFile();
+	AutoExecConfig_CleanFile();
 	
 	#if defined EW_MODULE_FORWARDS
 	EWM_Forwards_OnPluginStart();

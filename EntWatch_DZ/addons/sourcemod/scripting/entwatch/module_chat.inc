@@ -5,7 +5,7 @@ int		g_iChatASMode = 0;
 
 stock void EWM_Chat_OnPluginStart()
 {
-	g_hCvar_Chat_Admins_See	= CreateConVar("entwatch_adminchat_mode", "0", "Change AdminChat Mode (0 - All Messages, 1 - Only Pickup/Drop Items, 2 - Nothing)", _, true, 0.0, true, 2.0);
+	g_hCvar_Chat_Admins_See	= AutoExecConfig_CreateConVar("entwatch_adminchat_mode", "0", "Change AdminChat Mode (0 - All Messages, 1 - Only Pickup/Drop Items, 2 - Nothing)", _, true, 0.0, true, 2.0);
 	g_iChatASMode = GetConVarInt(g_hCvar_Chat_Admins_See);
 	HookConVarChange(g_hCvar_Chat_Admins_See, Cvar_Chat_Changed);
 }
